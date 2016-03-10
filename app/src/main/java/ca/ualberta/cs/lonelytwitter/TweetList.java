@@ -5,10 +5,18 @@ import java.util.ArrayList;
 /**
  * Created by joshua2 on 9/28/15.
  */
-public class TweetList {
+public class TweetList implements MyObserver {
     private ArrayList<Tweet> tweets = new ArrayList<Tweet>();
+    private static TweetList myTweetList;
 
     protected TweetList() { super(); }
+
+    public static TweetList getInstance() {
+        if (myTweetList == null ) {
+            myTweetList = new TweetList();
+        }
+        return myTweetList;
+    }
 
     public void add(Tweet tweet) {
         tweets.add(tweet);
@@ -30,4 +38,7 @@ public class TweetList {
         return tweets.get(position);
     }
 
+    public void myNotify() {
+
+    }
 }
